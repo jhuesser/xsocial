@@ -8,7 +8,8 @@ $urls = array(
     "https://www.businessinsider.com/elon-musk-earned-spot-at-museum-of-failure-reasons-2023-5?r=US&IR=T",
     "https://en.wikipedia.org/wiki/ElonJet",
     "https://edition.cnn.com/2023/03/29/media/elon-musk-twitter-promises-reliable-sources/index.html",
-    "https://techcrunch.com/2023/06/14/twitter-is-being-evicted-from-its-boulder-office-over-unpaid-rent/#:~:text=Twitter%20owes%20three%20months%27%20rent,numerous%20reports%20of%20unpaid%20bills."
+    "https://techcrunch.com/2023/06/14/twitter-is-being-evicted-from-its-boulder-office-over-unpaid-rent/#:~:text=Twitter%20owes%20three%20months%27%20rent,numerous%20reports%20of%20unpaid%20bills.",
+    "https://www.theguardian.com/world/2023/jun/03/twitter-conservative-media-elon-musk-ron-desantis"
 );
 $randomUrl = $urls[array_rand($urls)];
 header("Location: $randomUrl");
