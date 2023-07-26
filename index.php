@@ -1,5 +1,5 @@
 <?php
-require_once 'whois.main.php';
+require_once 'vendor/autoload.php';
 
 $urls = array(
     "https://twitter.com/ParkerMolloy/status/1683229371526438912",
