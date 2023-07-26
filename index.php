@@ -15,7 +15,8 @@ $urls = array(
 $randomUrl = $urls[array_rand($urls)];
 
 if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ipAddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    $ipAddresses = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+    $ipAddress = trim($ipAddresses[0]);
 } else {
     $ipAddress = $_SERVER['REMOTE_ADDR'];
 }
