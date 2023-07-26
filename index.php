@@ -1,5 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
+use Iodev\Whois\Factory;
 
 $urls = array(
     "https://twitter.com/ParkerMolloy/status/1683229371526438912",
@@ -23,8 +24,8 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 } else {
     $ipAddress = $_SERVER['REMOTE_ADDR'];
 }
-$whois = new Whois();
-$result = $whois->Lookup($ipAddress);
+$whois = Factory::get()->createWhois();
+$result = $whois->lookup($ipAddress);
 $owner = $result['regrinfo']['owner']['organization'] ?? 'Unknown';
 
 

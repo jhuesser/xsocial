@@ -1,5 +1,5 @@
 {
     "require": {
-        "phpwhois/phpwhois": "^4.2"
+        "io-developer/php-whois": "^4.1"
     }
 }
