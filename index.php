@@ -7,5 +7,7 @@ $urls = array(
     "https://www.cbsnews.com/miami/news/elon-musks-trans-child-wants-nothing-to-do-with-dad-billionaire-leans-toward-support-of-desantis/"
 );
 $randomUrl = $urls[array_rand($urls)];
+$logEntry = date('Y-m-d H:i:s') . " - Selected URL: $randomUrl";
+error_log($logEntry);
 header("Location: $randomUrl");
 exit();
