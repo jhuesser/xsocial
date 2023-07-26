@@ -1,4 +1,6 @@
 <?php
+require_once 'whois.main.php';
+
 $urls = array(
     "https://twitter.com/ParkerMolloy/status/1683229371526438912",
     "https://www.businessinsider.com/spacex-paid-250000-to-a-flight-attendant-who-accused-elon-musk-of-sexual-misconduct-2022-5?amp",
@@ -12,6 +14,7 @@ $urls = array(
     "https://www.theguardian.com/world/2023/jun/03/twitter-conservative-media-elon-musk-ron-desantis",
     "https://futurism.com/elon-musk-dad-emerald-mine"
 );
+
 $randomUrl = $urls[array_rand($urls)];
 
 if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -20,11 +23,15 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 } else {
     $ipAddress = $_SERVER['REMOTE_ADDR'];
 }
+$whois = new Whois();
+$result = $whois->Lookup($ipAddress);
+$owner = $result['regrinfo']['owner']['organization'] ?? 'Unknown';
+
 
 $rdnsName = gethostbyaddr($ipAddress);
 
 
-$logEntry = "Selected URL: $randomUrl - IP Address: $ipAddress - rDNS Name: $rdnsName";
+$logEntry = "Selected URL: $randomUrl - IP Address: $ipAddress - Owner: $owner - rDNS Name: $rdnsName";
 
 error_log($logEntry);
 header("Location: $randomUrl");
