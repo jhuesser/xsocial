@@ -25,8 +25,8 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
     $ipAddress = $_SERVER['REMOTE_ADDR'];
 }
 $whois = Factory::get()->createWhois();
-$result = $whois->lookup($ipAddress);
-$owner = $result['regrinfo']['owner']['organization'] ?? 'Unknown';
+$result = $whois->lookupDomain($ipAddress);
+$owner = $result->owner ?? 'Unknown';
 
 
 $rdnsName = gethostbyaddr($ipAddress);
