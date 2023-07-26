@@ -24,7 +24,7 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 } else {
     $ipAddress = $_SERVER['REMOTE_ADDR'];
 }
-$whois = Factory::get()->createWhois();
+//$whois = Factory::get()->createWhois();
 $result = $whois->lookupDomain($ipAddress);
 $owner = $result->owner ?? 'Unknown';
 
@@ -32,7 +32,7 @@ $owner = $result->owner ?? 'Unknown';
 $rdnsName = gethostbyaddr($ipAddress);
 
 
-$logEntry = "Selected URL: $randomUrl - IP Address: $ipAddress - Owner: $owner - rDNS Name: $rdnsName";
+$logEntry = "Selected URL: $randomUrl - IP Address: $ipAddress - rDNS Name: $rdnsName";
 
 error_log($logEntry);
 header("Location: $randomUrl");
