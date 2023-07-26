@@ -13,7 +13,13 @@ $urls = array(
     "https://futurism.com/elon-musk-dad-emerald-mine"
 );
 $randomUrl = $urls[array_rand($urls)];
-$logEntry = date('Y-m-d H:i:s') . " - Selected URL: $randomUrl";
+
+$ipAddress = $_SERVER['REMOTE_ADDR'];
+$rdnsName = gethostbyaddr($ipAddress);
+
+
+$logEntry = "Selected URL: $randomUrl - IP Address: $ipAddress - rDNS Name: $rdnsName";
+
 error_log($logEntry);
 header("Location: $randomUrl");
 exit();
