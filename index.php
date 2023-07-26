@@ -14,7 +14,12 @@ $urls = array(
 );
 $randomUrl = $urls[array_rand($urls)];
 
-$ipAddress = $_SERVER['REMOTE_ADDR'];
+if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ipAddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ipAddress = $_SERVER['REMOTE_ADDR'];
+}
+
 $rdnsName = gethostbyaddr($ipAddress);
 
 
